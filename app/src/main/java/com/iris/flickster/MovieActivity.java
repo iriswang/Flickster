@@ -24,6 +24,7 @@ public class MovieActivity extends AppCompatActivity {
     ArrayList<Movie> movies;
     MovieArrayAdapter _movieArrayAdapter;
     ListView lvItems;
+    String URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,19 +35,20 @@ public class MovieActivity extends AppCompatActivity {
         lvItems = (ListView) findViewById(R.id.lvMovies);
         _movieArrayAdapter = new MovieArrayAdapter(this, movies);
         lvItems.setAdapter(_movieArrayAdapter);
+        fetchMovieData();
 
+    }
 
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    private void fetchMovieData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(url, new JsonHttpResponseHandler(){
+        client.get(URL, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                JSONArray moviesJsonResult = null;
+                JSONArray moviesJsonResult;
                 try {
                     moviesJsonResult = response.getJSONArray("results");
                     movies.addAll(Movie.fromJsonArray(moviesJsonResult));
                     _movieArrayAdapter.notifyDataSetChanged();
-                    Log.d("DEBUG", movies.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -58,5 +60,6 @@ public class MovieActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+
     }
 }
