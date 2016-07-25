@@ -12,7 +12,9 @@ import java.util.ArrayList;
  */
 public class Movie {
 
-    private String IMAGE_PATH_FORMAT = "https://image.tmdb.org/t/p/w342/%s";
+    private final String POSTER_IMAGE_PATH_FORMAT = "https://image.tmdb.org/t/p/w185/%s";
+
+    private final String BACKDROP_IMAGE_PATH_FORMAT = "https://image.tmdb.org/t/p/w342/%s";
 
     String backdropPath;
 
@@ -22,7 +24,7 @@ public class Movie {
 
 
     public String getBackdropPath() {
-        return String.format(IMAGE_PATH_FORMAT, backdropPath);
+        return String.format(BACKDROP_IMAGE_PATH_FORMAT, backdropPath);
     }
 
     public String getOverview() {
@@ -34,7 +36,7 @@ public class Movie {
     }
 
     public String getPosterPath() {
-        return String.format(IMAGE_PATH_FORMAT, posterPath);
+        return String.format(POSTER_IMAGE_PATH_FORMAT, posterPath);
     }
 
     String overview;

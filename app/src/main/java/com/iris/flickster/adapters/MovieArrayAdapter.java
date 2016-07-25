@@ -58,7 +58,9 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
         } else {
             imagePath = movie.getPosterPath();
         }
-        Picasso.with(getContext()).load(imagePath).into(viewHolder.ivImage);
+        Picasso.with(getContext()).load(imagePath)
+               .placeholder(R.mipmap.movie_placeholder)
+               .into(viewHolder.ivImage);
         return convertView;
     }
 }

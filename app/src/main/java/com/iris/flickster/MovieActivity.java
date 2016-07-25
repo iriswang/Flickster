@@ -42,7 +42,6 @@ public class MovieActivity extends AppCompatActivity {
         lvItems.setAdapter(_movieArrayAdapter);
         fetchMovieData();
         setUpSwipeContainer();
-
     }
 
     private void setUpSwipeContainer() {
