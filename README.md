@@ -43,6 +43,8 @@ Here's a walkthrough of implemented user stories:
 ### Landscape view
 ![Video Walkthrough] (walkthroughs/flickster_landscape_walkthrough.gif)
 
+### Portrait view
+![Video Walkthrough] (walkthroughs/flickster_portrait_walkthrough.gif)
 
 ## Notes
 
